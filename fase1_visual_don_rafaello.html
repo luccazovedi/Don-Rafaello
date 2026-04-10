@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fase 1 — Don Rafaello Francisco Morato</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0F0D0B;
+  color: #F0EDE8;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  background: #0F0D0B;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,57,43,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,149,74,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(200,57,43,.8);
+  margin-bottom: 32px;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: rgba(200,57,43,.6);
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 800;
+  line-height: .95;
+  color: #F0EDE8;
+  margin-bottom: 32px;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: #C8392B;
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: rgba(240,237,232,.45);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 52px;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 7px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(240,237,232,.15);
+  color: rgba(240,237,232,.6);
+}
+
+.pill.red {
+  border-color: rgba(200,57,43,.4);
+  color: rgba(200,57,43,.9);
+  background: rgba(200,57,43,.08);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  right: 60px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(240,237,232,.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scroll-hint::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(240,237,232,.15);
+}
+
+/* ── SECTIONS ── */
+main { max-width: 900px; margin: 0 auto; padding: 80px 48px 100px; }
+
+.section { margin-bottom: 96px; }
+
+.section-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #C8392B;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-num::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(240,237,232,.08);
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #F0EDE8;
+  margin-bottom: 16px;
+}
+
+.section-body {
+  font-size: 15px;
+  color: rgba(240,237,232,.55);
+  max-width: 600px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+/* ── SEMANA CARDS ── */
+.semanas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.semana-card {
+  background: rgba(240,237,232,.04);
+  border: 1px solid rgba(240,237,232,.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s;
+}
+
+.semana-card:hover {
+  border-color: rgba(200,57,43,.3);
+}
+
+.semana-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C8392B, rgba(200,57,43,0));
+}
+
+.semana-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(200,57,43,.12);
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  user-select: none;
+}
+
+.semana-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #C8392B;
+  margin-bottom: 10px;
+}
+
+.semana-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F0EDE8;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.semana-desc {
+  font-size: 14px;
+  color: rgba(240,237,232,.5);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: rgba(240,237,232,.65);
+  line-height: 1.5;
+}
+
+.task-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #C8392B;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ── OBJETIVO VISUAL ── */
+.objetivo-strip {
+  background: #C8392B;
+  border-radius: 16px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.obj-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.obj-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 6px;
+}
+
+.obj-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.25;
+}
+
+/* ── O QUE NÃO É ── */
+.nao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.nao-card {
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.nao-card.nao {
+  background: rgba(240,237,232,.03);
+  border: 1px solid rgba(240,237,232,.07);
+}
+
+.nao-card.sim {
+  background: rgba(200,57,43,.07);
+  border: 1px solid rgba(200,57,43,.2);
+}
+
+.nao-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.nao-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.nao-card.nao .nao-title { color: rgba(240,237,232,.35); }
+.nao-card.sim .nao-title { color: #C8392B; }
+
+.nao-desc {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.nao-card.nao .nao-desc { color: rgba(240,237,232,.3); }
+.nao-card.sim .nao-desc { color: rgba(200,57,43,.7); }
+
+/* ── MÉTRICAS ── */
+.metricas-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(240,237,232,.3);
+  margin-bottom: 20px;
+}
+
+.metricas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.metrica-card {
+  background: rgba(240,237,232,.04);
+  border: 1px solid rgba(240,237,232,.08);
+  border-radius: 14px;
+  padding: 22px 18px;
+}
+
+.metrica-icon {
+  font-size: 22px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.metrica-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #F0EDE8;
+  margin-bottom: 6px;
+}
+
+.metrica-desc {
+  font-size: 12px;
+  color: rgba(240,237,232,.4);
+  line-height: 1.55;
+}
+
+/* ── TIMELINE BRIDGE ── */
+.bridge {
+  background: rgba(240,237,232,.03);
+  border: 1px solid rgba(240,237,232,.07);
+  border-radius: 20px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.bridge-phase {
+  text-align: center;
+}
+
+.bridge-phase-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(240,237,232,.3);
+  margin-bottom: 8px;
+}
+
+.bridge-phase-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #F0EDE8;
+  margin-bottom: 6px;
+}
+
+.bridge-phase-weeks {
+  font-size: 12px;
+  color: rgba(240,237,232,.35);
+}
+
+.bridge-phase.active .bridge-phase-name { color: #C8392B; }
+.bridge-phase.active .bridge-phase-label { color: rgba(200,57,43,.6); }
+
+.bridge-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(240,237,232,.2);
+  font-size: 22px;
+}
+
+.bridge-arrow span {
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: rgba(240,237,232,.03);
+  border-top: 1px solid rgba(240,237,232,.06);
+  text-align: center;
+  padding: 32px 48px;
+  font-size: 12px;
+  color: rgba(240,237,232,.2);
+  letter-spacing: .05em;
+}
+
+@media (max-width: 680px) {
+  .hero { padding: 40px 28px; }
+  main { padding: 60px 24px 80px; }
+  .semanas-grid, .nao-grid, .metricas-grid { grid-template-columns: 1fr; }
+  .bridge { grid-template-columns: 1fr; text-align: center; }
+  .bridge-arrow { transform: rotate(90deg); }
+  .objetivo-strip { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Don Rafaello · Francisco Morato</div>
+  <h1 class="hero-title">
+    Semanas
+    <em>1 e 2</em>
+  </h1>
+  <p class="hero-subtitle">O que acontece na primeira fase da campanha, por que ela funciona assim e o que vamos olhar no final.</p>
+  <div class="hero-pills">
+    <div class="pill red">Fase 1 · Alcance</div>
+    <div class="pill">Meta Ads</div>
+    <div class="pill">Francisco Morato + Franco da Rocha</div>
+    <div class="pill">2 semanas</div>
+  </div>
+  <div class="scroll-hint">Continue lendo</div>
+</section>
+
+<main>
+
+  <!-- POR QUE COMEÇAR ASSIM -->
+  <div class="section">
+    <div class="section-num">01 · O ponto de partida</div>
+    <h2 class="section-title">Por que não começamos pedindo pedido?</h2>
+    <p class="section-body">A unidade de Francisco Morato é nova na região. Ninguém de lá sabe que a Don Rafaello está ali. Anunciar uma oferta pra quem nunca ouviu falar da marca é como pedir casamento no primeiro olhar — pode funcionar, mas as chances são muito menores. Primeiro a gente existe. Depois a gente converte.</p>
+
+    <div class="objetivo-strip">
+      <div class="obj-icon">📣</div>
+      <div>
+        <div class="obj-label">Objetivo único desta fase</div>
+        <div class="obj-text">Fazer Francisco Morato e Franco da Rocha saberem que a Don Rafaello chegou na região</div>
+      </div>
+    </div>
+
+    <div class="nao-grid">
+      <div class="nao-card nao">
+        <div class="nao-icon">✗</div>
+        <div>
+          <div class="nao-title">Não é o foco nessas duas semanas</div>
+          <div class="nao-desc">Gerar pedidos, cliques no cardápio ou qualquer tipo de conversão. Isso vem na Fase 2.</div>
+        </div>
+      </div>
+      <div class="nao-card nao">
+        <div class="nao-icon">✗</div>
+        <div>
+          <div class="nao-title">Não vamos medir vendas</div>
+          <div class="nao-desc">Ainda não existe audiência aquecida suficiente para medir conversão de forma significativa.</div>
+        </div>
+      </div>
+      <div class="nao-card sim">
+        <div class="nao-icon">✓</div>
+        <div>
+          <div class="nao-title">Isso sim é o objetivo</div>
+          <div class="nao-desc">Aparecer para o maior número de pessoas possível nas duas cidades, com frequência suficiente para a marca ser lembrada.</div>
+        </div>
+      </div>
+      <div class="nao-card sim">
+        <div class="nao-icon">✓</div>
+        <div>
+          <div class="nao-title">E construir a base</div>
+          <div class="nao-desc">Coletar dados reais do público local para informar as decisões da Fase 2. Quem presta atenção, quem ignora, qual conteúdo retém mais.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AS DUAS SEMANAS -->
+  <div class="section">
+    <div class="section-num">02 · O que acontece</div>
+    <h2 class="section-title">Semana a semana</h2>
+    <p class="section-body">Cada semana tem uma função específica. Nenhuma campanha sobe sem aprovação prévia de vocês.</p>
+
+    <div class="semanas-grid">
+      <div class="semana-card">
+        <div class="semana-num">1</div>
+        <div class="semana-label">Semana 1</div>
+        <div class="semana-title">Preparação e lançamento</div>
+        <div class="semana-desc">Edito o conteúdo que já tenho, configuro as campanhas e coloco tudo no ar com sua aprovação.</div>
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Edição do vídeo gravado na loja
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Configuração da campanha Meta Ads com objetivo de Alcance
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Segmentação por raio: Francisco Morato + Franco da Rocha
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Envio para aprovação antes de qualquer coisa ir ao ar
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Otimização básica do Google Meu Negócio da unidade
+          </li>
+        </ul>
+      </div>
+
+      <div class="semana-card">
+        <div class="semana-num">2</div>
+        <div class="semana-label">Semana 2</div>
+        <div class="semana-title">Campanhas ativas e primeiros dados</div>
+        <div class="semana-desc">Campanhas no ar. Acompanho o desempenho diariamente e faço ajustes pontuais se necessário.</div>
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Monitoramento diário das campanhas
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Ajuste de distribuição de orçamento se um formato performar melhor
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Verificação se o alcance está crescendo dentro da região
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Coleta dos dados que vão orientar a Fase 2
+          </li>
+          <li class="task-item">
+            <div class="task-dot"></div>
+            Atualização semanal com vocês sobre o andamento
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- O QUE VAMOS OLHAR -->
+  <div class="section">
+    <div class="section-num">03 · O que vamos analisar</div>
+    <h2 class="section-title">Métricas reais dessa fase</h2>
+    <p class="section-body">Nessa fase o que importa são dados de exposição — quantas pessoas viram, com que frequência, e qual conteúdo prendeu mais a atenção. Só isso. Não vamos falar em pedidos nem em retorno financeiro porque esse não é o objetivo ainda.</p>
+
+    <div class="metricas-title">O que vamos olhar no relatório da semana 2</div>
+    <div class="metricas-grid">
+      <div class="metrica-card">
+        <span class="metrica-icon">👥</span>
+        <div class="metrica-name">Alcance único</div>
+        <div class="metrica-desc">Quantas pessoas diferentes viram o anúncio nas duas cidades. Indica a cobertura real da campanha.</div>
+      </div>
+      <div class="metrica-card">
+        <span class="metrica-icon">🔁</span>
+        <div class="metrica-name">Frequência</div>
+        <div class="metrica-desc">Quantas vezes em média cada pessoa viu o anúncio. O ideal é entre 2 e 4 vezes — o suficiente para fixar, sem saturar.</div>
+      </div>
+      <div class="metrica-card">
+        <span class="metrica-icon">▶️</span>
+        <div class="metrica-name">Retenção de vídeo</div>
+        <div class="metrica-desc">Quanto do vídeo as pessoas assistiram antes de pular. Indica se o conteúdo está prendendo a atenção ou não.</div>
+      </div>
+      <div class="metrica-card">
+        <span class="metrica-icon">💸</span>
+        <div class="metrica-name">CPM</div>
+        <div class="metrica-desc">Custo por mil visualizações do anúncio. Mostra a eficiência do gasto — quanto estamos pagando para aparecer.</div>
+      </div>
+      <div class="metrica-card">
+        <span class="metrica-icon">📍</span>
+        <div class="metrica-name">Distribuição geográfica</div>
+        <div class="metrica-desc">Como o alcance está se distribuindo entre Francisco Morato e Franco da Rocha. Ajuda a decidir onde concentrar na Fase 2.</div>
+      </div>
+      <div class="metrica-card">
+        <span class="metrica-icon">🎬</span>
+        <div class="metrica-name">Desempenho por criativo</div>
+        <div class="metrica-desc">Qual dos conteúdos performou melhor em retenção e menor custo. Esse vai liderar a Fase 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- O QUE VEM DEPOIS -->
+  <div class="section">
+    <div class="section-num">04 · O que vem depois</div>
+    <h2 class="section-title">Essa fase alimenta as próximas</h2>
+    <p class="section-body">Os dados das semanas 1 e 2 não são um fim em si — são a base para as decisões das semanas 3 em diante. Quanto mais certeira for a fase de alcance, menor vai ser o custo por pedido na fase de conversão.</p>
+
+    <div class="bridge">
+      <div class="bridge-phase active">
+        <div class="bridge-phase-label">Agora — você está aqui</div>
+        <div class="bridge-phase-name">Fase 1 · Alcance</div>
+        <div class="bridge-phase-weeks">Semanas 1 e 2</div>
+      </div>
+      <div class="bridge-arrow">
+        →
+        <span>dados</span>
+      </div>
+      <div class="bridge-phase">
+        <div class="bridge-phase-label">Próximo passo</div>
+        <div class="bridge-phase-name">Fase 2 · Conversão</div>
+        <div class="bridge-phase-weeks">Semanas 3 e 4</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Don Rafaello · Francisco Morato & Franco da Rocha · Fase 1 — Alcance · Abril 2026
+</footer>
+
+</body>
+</html>
